@@ -7,6 +7,7 @@ import qBank from "./Components/QuestionBank";
 import Score from "./Components/Score";
 import "./App.css";
 
+
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -73,6 +74,8 @@ class App extends Component {
 			</div>
 		);
 	}
+
+	
 }
 
 export default App;
