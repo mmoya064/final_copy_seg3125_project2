@@ -15,21 +15,21 @@ const qBank = [
 	},
 	{
 		id: 3,
-		question: "What is the capital of India?",
-		options: ["Delhi", "Mumbai", "Kolkata", "Chennai"],
-		answer: "Delhi"
+		question: "How much colour do you like to wear on a day-to-day basis?",
+		options: ["none (neutrals and black-and-white only)", "some (a pop of colour with most outfits)", "a good amount (at least one colourful clothing article with each outfit", "full-colour (no neutrals or black-and-white)"],
+		answer: "none (neutrals and black-and-white only)"
 	},
 	{
 		id: 4,
-		question: "What is the capital of Uttarakhad?",
-		options: ["Roorkee", "Haridwar", "Dehradun", "Nanital"],
-		answer: "Dehradun"
+		question: "What feelings best describe what you would like to get out of this experience",
+		options: ["Becoming more confident", "Fitting in/feelings of belonging in a particular environment", "Developing a stronger sense of self-expresison", "other"],
+		answer: "Becoming more confident"
 	},
 	{
 		id: 5,
-		question: "What is capital of Uttar Pradesh?",
-		options: ["GB Nagar", "Lucknow", "Prayagraj", "Agra"],
-		answer: "Lucknow"
+		question: "Rate your current level of confidence in you style",
+		options: ["1 (lowest, not confident)", "2", "3", "4 (highest, very confident)"],
+		answer: "2"
 	},
 ]
 

@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <style>
+        /*SPACING*/
+        .padding_smaller{
+            padding: 7.5px;
+        }
+
+        .padding_larger{
+            padding: 15px;
+        }
+
+
+
+        /* TOP BANNER*/
+        .topBanner{
+            background-color: rgb(15, 15, 77);
+            width: 100%;
+            height: 60px;
+            align-content: center;
+        }
+
+        .topBannerText{
+            color: white;
+            font-size: medium;
+            text-align: center;
+            font-family:"Playfair Display";
+        }
+
+        /*------------------HAMBURGER MENU AND ICONS-----------------*/
+        
+        body{
+        margin: 0;
+        padding: 0;
+        
+        /* make it look decent enough */
+        color: #cdcdcd;
+        font-family: "Avenir Next", "Avenir", sans-serif;
+        }
+
+        #menuToggle{
+        display: block;
+        position: relative;
+        top: 50px;
+        left: 50px;
+        
+        z-index: 1;
+        
+        -webkit-user-select: none;
+        user-select: none;
+        }
+
+        #menuToggle a{
+        text-decoration: none;
+        color: rgb(15, 15, 77);
+        
+        transition: color 0.3s ease;
+        }
+
+        #menuToggle a:hover
+        {
+        color: rgb(0, 0, 255);
+        }
+
+
+        #menuToggle input{
+        display: block;
+        width: 40px;
+        height: 32px;
+        position: absolute;
+        top: -7px;
+        left: -5px;
+        
+        cursor: pointer;
+        
+        opacity: 0; /* hide this */
+        z-index: 2; /* and place it over the hamburger */
+        
+        -webkit-touch-callout: none;
+        }
+
+        /*
+        * Just a quick hamburger
+        */
+        #menuToggle span{
+        display: block;
+        width: 33px;
+        height: 4px;
+        margin-bottom: 5px;
+        position: relative;
+        
+        background: #000000;
+        border-radius: 3px;
+        
+        z-index: 1;
+        
+        transform-origin: 4px 0px;
+        
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                    background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                    opacity 0.55s ease;
+        }
+
+        #menuToggle span:first-child{
+        transform-origin: 0% 0%;
+        }
+
+        #menuToggle span:nth-last-child(2){
+        transform-origin: 0% 100%;
+        }
+
+        /* 
+        * Transform all the slices of hamburger
+        * into a crossmark.
+        */
+        #menuToggle input:checked ~ span{
+        opacity: 1;
+        transform: rotate(45deg) translate(-2px, -1px);
+        background: #232323;
+        }
+
+        /*
+        * But let's hide the middle one.
+        */
+        #menuToggle input:checked ~ span:nth-last-child(3){
+        opacity: 0;
+        transform: rotate(0deg) scale(0.2, 0.2);
+        }
+
+        /*
+        * Ohyeah and the last one should go the other direction
+        */
+        #menuToggle input:checked ~ span:nth-last-child(2){
+        transform: rotate(-45deg) translate(0, -1px);
+        }
+
+        /*
+        * Make this absolute positioned
+        * at the top left of the screen
+        */
+        #menu{
+        position: absolute;
+        width: 300px;
+        margin: -100px 0 0 -50px;
+        padding: 50px;
+        padding-top: 125px;
+        
+        background: #ededed;
+        list-style-type: none;
+        -webkit-font-smoothing: antialiased;
+        /* to stop flickering of text in safari */
+        
+        transform-origin: 0% 0%;
+        transform: translate(-100%, 0);
+        
+        transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+        }
+
+        #menu li{
+        padding: 10px 0;
+        font-size: 22px;
+        }
+
+        /*
+        * And let's slide it in from the left
+        */
+        #menuToggle input:checked ~ ul{
+        transform: none;
+        }
+
+        .top-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background-color: rgb(15, 15, 77);
+        }
+
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icons svg {
+            cursor: pointer;
+        }
+
+        .iconContainer{
+            display: flex;
+            justify-content: right;
+            align-items: center;
+            padding: 10px;
+        }
+        /*-------------------------------MAIN TITLE-------------------------*/
+        .mainTitle{
+            font-size: large;
+            font-family: "Playfair Display";
+            text-align: center;
+            color: rgb(15, 15, 77);
+
+        }
+
+        .nine h1 {
+        text-align:center; font-size:75px; text-transform:uppercase; color: rgb(15, 15, 77); letter-spacing:1px;
+        font-family:"Palatino", serif; font-weight:400;
+        }
+        .nine h1 span {
+        margin-top: 5px;
+            font-size:15px; color:#444; word-spacing:1px; font-weight:normal; letter-spacing:2px;
+            text-transform: uppercase; font-family:"Playfair Display", sans-serif; font-weight:500;
+
+            display: grid;
+            grid-template-columns: 1fr max-content 1fr;
+            grid-template-rows: 27px 0;
+            grid-gap: 20px;
+            align-items: center;
+
+        }
+
+        .nineImage {
+        margin-top: 5px;
+            font-size:15px; color:#444; word-spacing:1px; font-weight:normal; letter-spacing:2px;
+            text-transform: uppercase; font-family:"Playfair Display", sans-serif; font-weight:500;
+
+            display: grid;
+            grid-template-columns: 1fr max-content 1fr;
+            grid-template-rows: 27px 0;
+            grid-gap: 20px;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .nine h1 span:after,.nine h1 span:before {
+            content: " ";
+            display: block;
+            border-bottom: 1px solid #ccc;
+            border-top: 1px solid #ccc;
+            height: 5px;
+        background-color:#f8f8f8;
+        }
+
+        /*-------------------------------NAVBAR -------------------------*/
+        * {box-sizing: border-box}
+
+        .navbar {
+        width: 80%;
+        background-color: rgb(211, 229, 255);
+        overflow: auto;
+        margin: auto;
+        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        height: 50px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        }
+
+        .navbar a {
+        float: left;
+        color: rgb(0, 0, 0);
+        text-decoration: none;
+        font-size: 20px;
+        width: 25%; /* Four links of equal widths */
+        text-align: center;
+        font-family: "Playfair Display";
+
+        margin: 0 10px; /* Adjust spacing between links as needed */
+        }
+
+        .navbar a:hover {
+        background-color: #fdfdfd;
+        }
+
+        .navbar a.active {
+        background-color: #fdfdfd;
+        }
+
+        @media screen and (max-width: 500px) {
+        .navbar a {
+            float: none;
+            display: block;
+            width: 100%;
+            text-align: left;
+        }
+        }
+
+        .logo{
+            align-items: center;
+            margin: auto;
+            height: 100px;
+            width: 100px;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .featuredTextTitle{
+            font-size: 60px;
+            font-family:"Playfair Display";
+            color: rgb(15, 15, 77);
+            text-align: center;
+
+
+            margin:auto;
+            align-items: center;
+        }
+
+        .featuredTextSubtitle{
+            font-size: 40px;
+            font-family:"Playfair Display";
+            color: rgb(15, 15, 77);
+            text-align: left;
+
+            margin-left: 60px;
+            margin-top: 70px;
+            align-items: center;
+
+        }
+
+        .recentLooksButton{
+            color: black;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+            margin: auto;
+            font-family:"Playfair Display";
+            font-size: 20px;
+
+            background-color: rgb(211, 229, 255);
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+            width: 80%;
+        }
+
+        .recentLooksButton:hover{
+            background-color: #fdfdfd;
+        }
+
+        .stylistText{
+            font-size: 20px;
+            font-family:"Playfair Display";
+            color: rgb(15, 15, 77);
+            text-align: left;       
+        }
+
+        .btn{
+            background-color: rgb(15, 15, 77);
+
+            color: white;
+            font-size: 50px;
+            padding: 12px 24px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            text-align: center;
+
+            width: 300px;
+            height: 70px;
+
+
+            font-family:"Playfair Display";
+
+            box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+        }
+
+        .btn:hover{
+            background-color: black;
+        }
+    </style>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Stylists & Portfolios</title>
+        <link rel="stylesheet" type="text/css" href="./style.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        
+    </head>
+
+    <body>
+        <!--------------------------TOP BANNER-------------------------->
+        <div class = "topBanner">
+            <h2 class = "topBannerText">FREE WORLDWIDE SHIPPING ON ALL ORDERS OVER $75</h2>
+        </div>
+
+        <!--------------------------HAMBURGER MENU AND ICONS-------------------------->
+
+        <div class = 'row'>
+            <div class = "col">
+                <nav role="navigation">
+                    <div id="menuToggle">
+                      <!--
+                      A fake / hidden checkbox is used as click reciever,
+                      so you can use the :checked selector on it.
+                      -->
+                      <input type="checkbox" />
+                      
+                      <!--
+                      Some spans to act as a hamburger.
+                      
+                      They are acting like a real hamburger,
+                      not that McDonalds stuff.
+                      -->
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                      
+                      <!--
+                      Too bad the menu has to be inside of the button
+                      but hey, it's pure CSS magic.
+                      -->
+                      <ul id="menu">
+                        <a href="index.html"><li>HOMEPAGE</li></a>
+
+                        <a href="p2_portfolio.html"><li>STYLISTS & PORTFOLIOS</li></a>
+                        <a href="p2_faq.html"><li>FAQ</li></a>
+                        <a href="p2_services.html"><li>BOOK A SERVICE</li></a>
+                      </ul>
+                    </div>
+                  </nav>    
+            </div>
+
+            <div class="icons iconContainer">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-suit-heart" viewBox="0 0 16 16">
+                    <path d="m8 6.236-.894-1.789c-.222-.443-.607-1.08-1.152-1.595C5.418 2.345 4.776 2 4 2 2.324 2 1 3.326 1 4.92c0 1.211.554 2.066 1.868 3.37.337.334.721.695 1.146 1.093C5.122 10.423 6.5 11.717 8 13.447c1.5-1.73 2.878-3.024 3.986-4.064.425-.398.81-.76 1.146-1.093C14.446 6.986 15 6.131 15 4.92 15 3.326 13.676 2 12 2c-.777 0-1.418.345-1.954.852-.545.515-.93 1.152-1.152 1.595zm.392 8.292a.513.513 0 0 1-.784 0c-1.601-1.902-3.05-3.262-4.243-4.381C1.3 8.208 0 6.989 0 4.92 0 2.755 1.79 1 4 1c1.6 0 2.719 1.05 3.404 2.008.26.365.458.716.596.992a7.6 7.6 0 0 1 .596-.992C9.281 2.049 10.4 1 12 1c2.21 0 4 1.755 4 3.92 0 2.069-1.3 3.288-3.365 5.227-1.193 1.12-2.642 2.48-4.243 4.38z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person" viewBox="0 0 16 16">
+                    <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                </svg>
+            </div>
+
+        </div>
+
+
+        <!----------------------MAIN TITLE----------------------->
+
+        <div class="nine">
+            <h1>NEW MOON
+                <div class = "nineImage">
+                    <img  class = "logo" src = "images/N.png" alt ="logo">
+                </div>
+                <span>RE-DISCOVER YOUR STYLE</span></h1>
+        </div>
+
+
+        <!--------------------------NAV BAR-------------------------->
+
+        <div class="navbar" >
+            <a href="p2_portfolio.html">STYLISTS & PORTFOLIOS</a>
+            <a href="p2_faq.html">FAQ</a> 
+            <a href="p2_services.html">BOOK A SERVICE</a> 
+        </div>
+
+        <div class = "padding_larger"></div>
+        <div class = "padding_larger"></div>
+
+
+<!-------------------------------PORTFOLIOS--------------------------->
+
+    <div class = "row">
+        <div class = "col" style = "text-align: center; margin:auto">
+            <h2 class ="featuredTextTitle">STYLISTS</h2>
+
+            <div class = "padding_larger"></div>
+
+            <div class="card" style="width: 18rem;text-align: center; margin:auto; border-style: none; padding-top: 0;">
+                <img src="images/frontImage.png" class="card-img-top" alt="stylist 1 photo" style = "height: 300px; width: 288px">
+                <div class="card-body">
+                    <p class="card-text">
+                        <h5 class = "stylistText"><b>STYLIST:</b> ALLY</h5>
+                        <h5 class = "stylistText"><b>STYLE DESCRIPTION:</b> </h5>
+                        <h5 class = "stylistText">CONTEMPORARY + STREETWEAR</h5>
+                    </p>
+                </div>
+            </div>
+            <button class = "recentLooksButton" data-toggle="modal" data-target="#modal1" style = "width: 280px">ALLY'S REVIEWS</button>
+        </div>
+
+          <!-- Modal -->
+        <div class="modal fade" id="modal1" role="dialog">
+            <div class="modal-dialog">
+            
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" style = "text-align: left; margin-left: 10px">&times;</button>
+                        <h4 class="modal-title" style = "margin:auto;text-align: left;">ALLY'S REVIEWS</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p style = "margin: auto; text-align: center;">9.5/10</p>
+                        <p style = "margin: auto; text-align: center;">ALLY DID A GREAT JOB!</p>
+                        <hr>
+                        <p style = "margin: auto; text-align: center;">10/10</p>
+                        <p style = "margin: auto; text-align: center;">HAD THE BEST EXPERIENCE!</p>
+                        <hr>
+                        <p style = "margin: auto; text-align: center;">9/10</p>
+                        <p style = "margin: auto; text-align: center;">AMAZING SERVICE</p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style = "text-align: center; margin: auto;">Close</button>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+
+  
+
+        <div class = "col" style = "text-align: center; margin-left:auto; margin-right: auto;">
+            <h2 class ="featuredTextTitle">PORTFOLIOS</h2>
+
+            <div class = "padding_smaller"></div>
+            <div class = "padding_smaller"></div>
+
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 18rem;text-align: center; margin:auto;">
+                <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                <div class="carousel-item active" style = "height: 300px; width: 288px">
+                    <img class="d-block w-100" src="images/frontImage.png" alt="First slide"  style = "height: 300px; width: 250px">
+                </div>
+                <div class="carousel-item"  style = "height: 300px; width: 288px">
+                    <img class="d-block w-100" src="images/h3.jpeg" alt="Second slide"  style = "height: 300px; width: 250px">
+                </div>
+                <div class="carousel-item"  style = "height: 300px; width: 288px">
+                    <img class="d-block w-100" src="images/hs2.jpeg" alt="Third slide"  style = "height: 300px; width: 250px">
+                </div>
+                </div>
+                <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <div class = "padding_larger"></div>
+
+
+            <div style = "width: 288px; text-align: center; margin: auto;">
+                <button class = "recentLooksButton" >BOOK WITH ALLY</button>
+            </div>
+
+            <div class = "padding_larger"></div>
+            <div class = "padding_larger"></div>
+
+
+        </div>
+    </div>  
+
+
+    <div class = "row">
+        <div class = "col" style = "text-align: center; margin:auto">
+            <div class = "padding_larger"></div>
+
+            <div class="card" style="width: 18rem;text-align: center; margin:auto; border-style: none; padding-top: 0;">
+                <img src="images/frontImage.png" class="card-img-top" alt="stylist 1 photo" style = "height: 300px; width: 288px">
+                <div class="card-body">
+                    <p class="card-text">
+                        <h5 class = "stylistText"><b>STYLIST:</b> SOPH</h5>
+                        <h5 class = "stylistText"><b>STYLE DESCRIPTION:</b> </h5>
+                        <h5 class = "stylistText">PROFESSIONAL + CHIC</h5>
+                    </p>
+                </div>
+              </div>
+              <button class = "recentLooksButton" data-toggle="modal" data-target="#modal2" style = "width: 280px">SOPH'S REVIEWS</button>
+            </div>
+    
+          <!-- Modal -->
+          <div class="modal fade" id="modal2" role="dialog">
+            <div class="modal-dialog">
+            
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" style = "text-align: left; margin-left: 10px">&times;</button>
+                        <h4 class="modal-title" style = "margin:auto;text-align: left;">SOPH'S REVIEWS</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p style = "margin: auto; text-align: center;">9/10</p>
+                        <p style = "margin: auto; text-align: center;">SOPH IS SUCH A GREAT STYLIST!</p>
+                        <hr>
+                        <p style = "margin: auto; text-align: center;">8.5/10</p>
+                        <p style = "margin: auto; text-align: center;">HAD SO MUCH FUN WITH THIS EXPERIENCE</p>
+                        <hr>
+                        <p style = "margin: auto; text-align: center;">10/10</p>
+                        <p style = "margin: auto; text-align: center;">GREAT SERVICE</p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style = "text-align: center; margin: auto;">Close</button>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+
+        <div class = "col" style = "text-align: center; margin:auto">
+            <div class = "padding_larger"></div>
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 18rem;text-align: center; margin:auto;">
+                <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                <div class="carousel-item active" style = "height: 300px; width: 288px">
+                    <img class="d-block w-100" src="images/frontImage.png" alt="First slide"  style = "height: 300px; width: 250px">
+                </div>
+                <div class="carousel-item"  style = "height: 300px; width: 288px">
+                    <img class="d-block w-100" src="images/h3.jpeg" alt="Second slide"  style = "height: 300px; width: 250px">
+                </div>
+                <div class="carousel-item"  style = "height: 300px; width: 288px">
+                    <img class="d-block w-100" src="images/hs2.jpeg" alt="Third slide"  style = "height: 300px; width: 250px">
+                </div>
+                </div>
+                <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <div class = "padding_larger"></div>
+
+
+            <div style = "width: 288px; text-align: center; margin: auto;">
+                <button class = "recentLooksButton" >BOOK WITH SOPH</button>
+            </div>
+
+            <div class = "padding_larger"></div>
+            <div class = "padding_larger"></div>
+
+
+        </div>
+    </div>  
+
+
+    <div class = "row">
+        <div class = "col" style = "text-align: center; margin:auto">
+            <div class = "padding_larger"></div>
+
+            <div class="card" style="width: 18rem;text-align: center; margin:auto; border-style: none; padding-top: 0;">
+                <img src="images/frontImage.png" class="card-img-top" alt="stylist 1 photo" style = "height: 300px; width: 288px">
+                <div class="card-body">
+                    <p class="card-text">
+                        <h5 class = "stylistText"><b>STYLIST:</b> JAKE</h5>
+                        <h5 class = "stylistText"><b>STYLE DESCRIPTION:</b> </h5>
+                        <h5 class = "stylistText">WHIMSICAL + TIMELESS</h5>
+                    </p>
+                </div>
+            </div>
+            <button class = "recentLooksButton" data-toggle="modal" data-target="#modal3" style = "width: 280px">JAKE'S REVIEWS</button>
+        </div>
+
+          <!-- Modal -->
+          <div class="modal fade" id="modal3" role="dialog">
+            <div class="modal-dialog">
+            
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" style = "text-align: left; margin-left: 10px">&times;</button>
+                        <h4 class="modal-title" style = "margin:auto;text-align: left;">JAKE'S REVIEWS</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p style = "margin: auto; text-align: center;">9.5/10</p>
+                        <p style = "margin: auto; text-align: center;">REALLY WELL DONE</p>
+                        <hr>
+                        <p style = "margin: auto; text-align: center;">10/10</p>
+                        <p style = "margin: auto; text-align: center;">ABSOLUTELY WORTH IT</p>
+                        <hr>
+                        <p style = "margin: auto; text-align: center;">10/10</p>
+                        <p style = "margin: auto; text-align: center;">AMAZING WORK</p>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" style = "text-align: center; margin: auto;">Close</button>
+                    </div>
+                </div>
+            
+            </div>
+        </div>
+
+
+        <div class = "col" style = "text-align: center; margin:auto">
+            <div class = "padding_larger"></div>
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width: 18rem;text-align: center; margin:auto;">
+                <ol class="carousel-indicators">
+                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+                <div class="carousel-item active" style = "height: 300px; width: 288px">
+                    <img class="d-block w-100" src="images/frontImage.png" alt="First slide"  style = "height: 300px; width: 250px">
+                </div>
+                <div class="carousel-item"  style = "height: 300px; width: 288px">
+                    <img class="d-block w-100" src="images/h3.jpeg" alt="Second slide"  style = "height: 300px; width: 250px">
+                </div>
+                <div class="carousel-item"  style = "height: 300px; width: 288px">
+                    <img class="d-block w-100" src="images/hs2.jpeg" alt="Third slide"  style = "height: 300px; width: 250px">
+                </div>
+                </div>
+                <a class="carousel-control-prev " href="#carouselExampleIndicators" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+                </a>
+            </div>
+
+            <div class = "padding_larger"></div>
+
+
+            <div style = "width: 288px; text-align: center; margin: auto;">
+                <button class = "recentLooksButton" >BOOK WITH JAKE</button>
+            </div>
+
+            <div class = "padding_larger"></div>
+            <div class = "padding_larger"></div>
+
+
+        </div>
+    </div>  
+    
+
+    <div class = "padding_larger"></div>
+    <div class = "padding_larger"></div>
+
+    <div style = "text-align: center; margin: auto;">
+        <button class="btn" style = "font-size: 30px;">BOOK A SERVICE</button>
+    </div>
+
+
+    <div class = "padding_larger"></div>
+    <div class = "padding_larger"></div>
+
+
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
