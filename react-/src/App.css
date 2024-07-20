@@ -40,8 +40,12 @@
 /* App.css */
 
 body {
-  background-color: #292b2e;
+  text-align: center;
+  margin: auto;
+  background-color: rgb(15, 15, 77);
+  font-family:"Playfair Display";
   color: #ffffff;
+  font-size: large;
   }
   
   .app-title {

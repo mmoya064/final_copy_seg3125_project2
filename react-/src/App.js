@@ -55,7 +55,7 @@ class App extends Component {
 			this.state;
 		return (
 			<div className="App d-flex flex-column align-items-center justify-content-center">
-				<h1 className="app-title">QUIZ APP</h1>
+				<h1 className="app-title">STYLIST QUIZ</h1>
 				{!quizEnd ? (
 					<Question
 						question={questionBank[currentQuestion]}
