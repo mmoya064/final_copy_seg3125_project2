@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
 import "./css/p2_faq.css";
 
-class FrFaq extends Component {
+class Faq extends Component {
   render() {
     return (
       <Router>
@@ -117,4 +117,4 @@ function searchAnimal() {
   }
 }
 
-export default FrFaq;
+export default Faq;
