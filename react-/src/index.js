@@ -5,8 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 
 const homepage = () => {
-  /*window.location.href = 'https://mmoya064.github.io/final_copy_seg3125_project2/'; // Replace with the correct path to your HTML file*/
-  
+  window.location.href = 'https://mmoya064.github.io/final_copy_seg3125_project2/'; // Replace with the correct path to your HTML file
 
 }
 
