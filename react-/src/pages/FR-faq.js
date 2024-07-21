@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-
+import Faq from './p2_faq'; // Adjust the path as necessary
+import P2_portfolio from './p2_portfolio'; // Adjust the path as necessary
+import P2_confirmation from './p2_confirmation'; // Adjust the path as necessary
+import Homepage from './homepage'; // Adjust the path as necessary
 import "./css/p2_faq.css";
+
+// Your component class and functions...
 
 class FrFaq extends Component {
   render() {
@@ -90,10 +95,10 @@ class FrFaq extends Component {
         </div>
 
         <Routes>
-          <Route path="/faq" element={<P2Faq />} />
-          <Route path="/portfolio" element={<P2Portfolio />} />
-          <Route path="/confirmation" element={<P2Confirmation />} />
-          <Route path="/" element={<Home />} />
+          <Route path="/pages/p2_faq" element={<Faq />} />
+          <Route path="/portfolio" element={<P2_portfolio />} />
+          <Route path="/confirmation" element={<P2_confirmation />} />
+          <Route path="/" element={<Homepage />} />
         </Routes>
       </Router>
     );
