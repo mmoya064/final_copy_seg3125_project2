@@ -1,81 +1,52 @@
 // App.js
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
+import P2Confirmation from './Components/p2_confirmation';
+import P2Faq from './Components/p2_faq';
+import P2Portfolio from './Components/p2_portfolio';
 
-import React, { Component } from "react";
-import "bootstrap/dist/css/bootstrap.min.css";
-import Question from "./Components/Question";
-import qBank from "./Components/QuestionBank";
-import Score from "./Components/Score";
-import "./App.css";
+function App() {
+  return (
+    <Router>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/faq">FAQ</Link>
+            </li>
+            <li>
+              <Link to="/portfolio">Portfolio</Link>
+            </li>
+            <li>
+              <Link to="/confirmation">Confirmation</Link>
+            </li>
+          </ul>
+        </nav>
 
+        <Switch>
+          <Route path="/faq">
+            <P2Faq />
+          </Route>
+          <Route path="/portfolio">
+            <P2Portfolio />
+          </Route>
+          <Route path="/confirmation">
+            <P2Confirmation />
+          </Route>
+          <Route path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
+  );
+}
 
-class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			questionBank: qBank,
-			currentQuestion: 0,
-			selectedOption: "",
-			score: 0,
-			quizEnd: false,
-		};
-	}
-
-	handleOptionChange = (e) => {
-		this.setState({ selectedOption: e.target.value });
-	};
-
-	handleFormSubmit = (e) => {
-		e.preventDefault();
-		this.checkAnswer();
-		this.handleNextQuestion();
-	};
-
-	checkAnswer = () => {
-		const { questionBank, currentQuestion, selectedOption, score } = this.state;
-		if (selectedOption === questionBank[currentQuestion].answer) {
-			this.setState((prevState) => ({ score: prevState.score + 1 }));
-		}
-	};
-
-	handleNextQuestion = () => {
-		const { questionBank, currentQuestion } = this.state;
-		if (currentQuestion + 1 < questionBank.length) {
-			this.setState((prevState) => ({
-				currentQuestion: prevState.currentQuestion + 1,
-				selectedOption: "",
-			}));
-		} else {
-			this.setState({
-				quizEnd: true,
-			});
-		}
-	};
-
-	render() {
-		const { questionBank, currentQuestion, selectedOption, score, quizEnd } =
-			this.state;
-		return (
-			<div className="App d-flex flex-column align-items-center justify-content-center">
-				<h1 className="app-title">STYLIST QUIZ</h1>
-				{!quizEnd ? (
-					<Question
-						question={questionBank[currentQuestion]}
-						selectedOption={selectedOption}
-						onOptionChange={this.handleOptionChange}
-						onSubmit={this.handleFormSubmit}
-					/>
-				) : (
-					<Score
-						score={score}
-						onNextQuestion={this.handleNextQuestion}
-						className="score"
-					/>
-				)}
-			</div>
-		);
-	}
-
-	
+function Home() {
+  return <h2>Home</h2>;
 }
 
 export default App;
