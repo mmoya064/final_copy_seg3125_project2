@@ -2,9 +2,13 @@
 
 import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+
 import Question from "./Components/Question";
 import qBank from "./Components/QuestionBank";
 import Score from "./Components/Score";
+
+import FrFaq from "./pages/FR-faq";
+
 import "./App.css";
 
 
